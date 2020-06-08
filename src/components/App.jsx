@@ -1,10 +1,20 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import MKSelectFighter from './MKSelectFighter/MKSelectFighter';
+import MKVSScreen from './MKVSScreen/MKVSScreen';
 
 function App() {
     return (
-        <div className="App">
-            <h1>Select your fighter</h1>
-        </div>
+        <Router>
+            <Switch>
+                <Route path="/vs">
+                    <MKVSScreen />
+                </Route>
+                <Route path="/">
+                    <MKSelectFighter />
+                </Route>
+            </Switch>
+        </Router>
     );
 }
 

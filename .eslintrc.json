@@ -32,10 +32,11 @@
             }],
         "react/jsx-indent": ["error", 4],
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
+        "react-hooks/exhaustive-deps": 0,
         "no-console": "off",
         "react/prop-types": 0,
-        "prettier/prettier": ["error"]
+        "prettier/prettier": ["error"],
+        "import/prefer-default-export": 0
     },
     "globals": {
         "window": true,
