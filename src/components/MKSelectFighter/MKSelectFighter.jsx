@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useKeyPress } from '../../utils/hooks';
 
 const fighters = [
@@ -71,16 +72,17 @@ const fighters = [
 ];
 
 export default function MKSelectFighter() {
+    const history = useHistory();
     const [active, setActive] = useState(0);
     const upPress = useKeyPress('ArrowUp');
     const downPress = useKeyPress('ArrowDown');
     const leftPress = useKeyPress('ArrowLeft');
     const rightPress = useKeyPress('ArrowRight');
-    console.log(active);
+    const enterPress = useKeyPress('Enter');
 
     useEffect(() => {
         if (upPress) {
-            if (active > 0 && active < 7) {
+            if (active > 0 && active < 6) {
                 setActive((a) => 16 + a);
             } else if (active >= 7 && active <= 12) {
                 setActive((a) => a - 6);
@@ -122,6 +124,11 @@ export default function MKSelectFighter() {
             }
         }
     }, [rightPress]);
+    useEffect(() => {
+        if (enterPress) {
+            history.push('/vs', { fighter: active });
+        }
+    }, [enterPress]);
 
     return (
         <div className="screen">
